@@ -17,8 +17,8 @@ A modern web-based recreation of the classic Winamp music player interface built
 
 1. Clone the repository:
 ```sh
-git clone <repository-url>
-cd winamp-classic-bolt-new
+git clone https://github.com/ekaone/winamp-classic
+cd winamp-classic
 ```
 
 2. Install dependencies:
