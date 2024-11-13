@@ -1,5 +1,4 @@
-import React from 'react';
-import { Track } from '../types';
+import { Track } from "../types";
 
 interface PlaylistViewProps {
   playlist: Track[];
@@ -7,13 +6,13 @@ interface PlaylistViewProps {
   onTrackSelect: (index: number) => void;
 }
 
-export function PlaylistView({ playlist, currentTrackIndex, onTrackSelect }: PlaylistViewProps) {
+export function PlaylistView({
+  playlist,
+  currentTrackIndex,
+  onTrackSelect,
+}: PlaylistViewProps) {
   if (playlist.length === 0) {
-    return (
-      <div className="playlist-empty">
-        Drag and drop MP3 files here
-      </div>
-    );
+    return <div className="playlist-empty">Drag and drop MP3 files here</div>;
   }
 
   return (
@@ -21,7 +20,9 @@ export function PlaylistView({ playlist, currentTrackIndex, onTrackSelect }: Pla
       {playlist.map((track, index) => (
         <div
           key={index}
-          className={`playlist-item ${index === currentTrackIndex ? 'active' : ''}`}
+          className={`playlist-item ${
+            index === currentTrackIndex ? "active" : ""
+          }`}
           onClick={() => onTrackSelect(index)}
         >
           {track.name}

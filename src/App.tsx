@@ -1,6 +1,5 @@
-import React from 'react';
-import Player from './components/Player';
-import './winamp.css';
+import Player from "./components/Player";
+import "./winamp.css";
 
 function App() {
   return (

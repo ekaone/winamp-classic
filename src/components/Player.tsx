@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
-import { AudioVisualizer } from './AudioVisualizer';
-import { Controls } from './Controls';
-import { PlaylistView } from './PlaylistView';
-import { Track } from '../types';
-import { useAudioContext } from '../hooks/useAudioContext';
+import React, { useRef, useState } from "react";
+import { AudioVisualizer } from "./AudioVisualizer";
+import { Controls } from "./Controls";
+import { PlaylistView } from "./PlaylistView";
+import { Track } from "../types";
+import { useAudioContext } from "../hooks/useAudioContext";
 
 function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -12,7 +12,7 @@ function Player() {
   const [volume, setVolume] = useState(0.7);
   const [playlist, setPlaylist] = useState<Track[]>([]);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [showPlaylist, setShowPlaylist] = useState(false);
+  const [showPlaylist, setShowPlaylist] = useState(true);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const analyzerNode = useAudioContext(audioRef.current);
@@ -21,12 +21,12 @@ function Player() {
     e.preventDefault();
     const files = Array.from(e.dataTransfer.files);
     const newTracks = files
-      .filter(file => file.type.includes('audio'))
-      .map(file => ({
+      .filter((file) => file.type.includes("audio"))
+      .map((file) => ({
         name: file.name,
-        url: URL.createObjectURL(file)
+        url: URL.createObjectURL(file),
       }));
-    
+
     setPlaylist([...playlist, ...newTracks]);
   };
 
@@ -69,15 +69,15 @@ function Player() {
   };
 
   const handlePrevious = () => {
-    setCurrentTrackIndex(prev => Math.max(0, prev - 1));
+    setCurrentTrackIndex((prev) => Math.max(0, prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentTrackIndex(prev => Math.min(playlist.length - 1, prev + 1));
+    setCurrentTrackIndex((prev) => Math.min(playlist.length - 1, prev + 1));
   };
 
   return (
-    <div 
+    <div
       className="winamp-container"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
